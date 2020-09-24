@@ -31,11 +31,15 @@ public class BankController {
         return "sendMoneyPage";
     }
 
-//    @RequestMapping(value = "sendMoney", method = RequestMethod.POST)
-//    public String sendMoney(Model model,SendMoneyForm sendMoneyForm) {
-//
-////        bankService.transferTransaction(sendMoneyForm);
-//
-//        return "redirect:/";
-//    }
+    @RequestMapping(value = "sendMoney", method = RequestMethod.POST)
+    public String sendMoney(Model model,SendMoneyForm sendMoneyForm) {
+
+        try {
+            bankService.transferTransaction(sendMoneyForm);
+        } catch (Exception e) {
+        log.error(e.getMessage());
+        }
+
+        return "redirect:/";
+    }
 }
