@@ -2,16 +2,17 @@ package com.example.demo;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
-@Table
+@Table(name = "Bank_Account")
 public class BankAccount {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    @Column(length = 128,nullable = false)
     String fullName;
-    Long balance;
+    @Column(nullable = false)
+    double balance;
 }
