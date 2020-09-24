@@ -12,7 +12,7 @@ public class DemoApplication {
         long time=System.currentTimeMillis();
         SpringApplication.run(DemoApplication.class, args);
 
-      log.info("{}STARTED",System.currentTimeMillis()-time);
+      log.info("STARTED TIME: {}",System.currentTimeMillis()-time);
     }
 
 }

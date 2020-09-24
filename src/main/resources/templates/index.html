@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Accounts</title>
+</head>
+<body>
+<h3>SHOW ALL ACCOUNTS</h3>
+
+<div xmlns:th="http://www.thymeleaf.org"
+     style="border: 1px solid #ccc;padding:5px;margin-bottom:20px;">
+
+    <a th:href="@{/}">Accounts</a>
+
+    | &nbsp;
+
+    <a th:href="@{/sendMoney}">Send Money</a>
+
+</div>
+
+<table border="1px">
+    <tr>
+        <td>ID</td>
+        <td>FullName</td>
+        <td>Balance</td>
+    </tr>
+    <tr th:each="accountInfo : ${accountInfos}">
+        <th th:text="${accountInfo.id}"></th>
+        <th th:text="${accountInfo.fullName}"></th>
+        <th th:text="${accountInfo.balance}"></th>
+    </tr>
+</table>
+</body>
+</html>
