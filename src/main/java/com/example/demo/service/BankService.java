@@ -18,7 +18,7 @@ public class BankService {
         return bankRepository.findAll();
     }
 
-@Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     public void transferTransaction(SendMoneyForm sendMoneyForm) throws Exception {
         long fromAccountId = sendMoneyForm.getFromAccountId();
         long toAccountId = sendMoneyForm.getToAccountId();
@@ -26,13 +26,22 @@ public class BankService {
 
         BankAccount fromAccount = bankRepository.findById(fromAccountId).get();
         if (amount > fromAccount.getBalance() - 50) {
-            return;
+            throw new Exception("het tien");
         } else {
+
             BankAccount toAccount = bankRepository.findById(toAccountId).get();
 
+//            if (toAccount==null||fromAccount==null){
+//                throw new Exception("Account blank" + fromAccount.getId() + toAccount.getId());
+//
+//            }
+            if (fromAccount == toAccount) {
+                throw new Exception("Khong the chuyen tien cho chinh minh. AccountId:" +fromAccount.getId());
+
+            }
             fromAccount.setBalance(fromAccount.getBalance() - amount);
             bankRepository.save(fromAccount);
-            if (fromAccount.getBalance() <= 300) throw new Exception("het tien");
+            if (fromAccount.getBalance() <= 500) throw new Exception("khong dc phep");
             toAccount.setBalance(toAccount.getBalance() + amount);
             bankRepository.save(toAccount);
 

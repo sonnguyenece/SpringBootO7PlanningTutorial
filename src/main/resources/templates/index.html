@@ -11,11 +11,12 @@
      style="border: 1px solid #ccc;padding:5px;margin-bottom:20px;">
 
     <a th:href="@{/}">Accounts</a>
-
     | &nbsp;
-
     <a th:href="@{/sendMoney}">Send Money</a>
 
+</div>
+<div th:if="${infoMessage !=null}">
+<p th:text="${infoMessage}"></p>
 </div>
 
 <table border="1px">
