@@ -9,4 +9,5 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface AppUserRepository extends JpaRepository<AppUser,Long> {
 
+    AppUser findByUserName(String username);
 }
